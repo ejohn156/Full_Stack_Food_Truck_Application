@@ -1,10 +1,9 @@
 ﻿using System;
-using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Models.CoordinateModel;
 
-namespace Full_Stack_Food_Truck_Application.Models.FavoriteModels
+namespace Full_Stack_Food_Truck_Application.Models.UserModels
 {
-    public class GetFavoriteModel
+    public class GetFavoritesOfUser
     {
         public string Id { get; set; }
         public string Truck_Name { get; set; }
@@ -14,6 +13,5 @@ namespace Full_Stack_Food_Truck_Application.Models.FavoriteModels
         public string[] Categories { get; set; }
         public GetCoordinatesModel Coordinates { get; set; }
         public string Location { get; set; }
-        public GetUserOfFavoriteModel CreatedBy { get; set; }
     }
 }

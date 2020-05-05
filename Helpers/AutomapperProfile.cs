@@ -17,7 +17,12 @@ namespace Full_Stack_Food_Truck_Application.Helpers
             CreateMap<User, GetUserModel>();
             CreateMap<UpdateUserModel, User>();
             CreateMap<GetCoordinatesModel, Coordinates>();
-            CreateMap<GetFavoriteModel, Favorite>();
+            CreateMap<Favorite, GetFavoriteModel > ();
+            CreateMap<CreateFavoriteModel, Favorite>();
+            CreateMap<Favorite, CreateFavoriteModel>();
+            CreateMap<User, GetUserOfFavoriteModel>();
+            CreateMap<Coordinates, GetCoordinatesModel>();
+            CreateMap<Favorite, GetFavoritesOfUser>();
         }
     }
 }

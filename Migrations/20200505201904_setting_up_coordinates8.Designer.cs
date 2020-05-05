@@ -3,15 +3,17 @@ using System;
 using Full_Stack_Food_Truck_Application.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Full_Stack_Food_Truck_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200505201904_setting_up_coordinates8")]
+    partial class setting_up_coordinates8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,6 +56,9 @@ namespace Full_Stack_Food_Truck_Application.Migrations
                     b.Property<string>("Creator_Id")
                         .HasColumnType("text");
 
+                    b.Property<string>("Favorite_Id")
+                        .HasColumnType("text");
+
                     b.Property<string>("Location")
                         .HasColumnType("text");
 
@@ -76,7 +81,7 @@ namespace Full_Stack_Food_Truck_Application.Migrations
 
                     b.HasIndex("Coordinate_Id");
 
-                    b.HasIndex("Creator_Id");
+                    b.HasIndex("Favorite_Id");
 
                     b.ToTable("Favorites");
                 });
@@ -88,6 +93,9 @@ namespace Full_Stack_Food_Truck_Application.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Favorite_Id")
                         .HasColumnType("text");
 
                     b.Property<string>("First_Name")
@@ -115,7 +123,7 @@ namespace Full_Stack_Food_Truck_Application.Migrations
 
                     b.HasOne("Full_Stack_Food_Truck_Application.Data.Entities.User", "CreatedBy")
                         .WithMany("Favorites")
-                        .HasForeignKey("Creator_Id");
+                        .HasForeignKey("Favorite_Id");
                 });
 #pragma warning restore 612, 618
         }

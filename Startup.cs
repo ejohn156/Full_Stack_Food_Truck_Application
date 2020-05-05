@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Threading.Tasks;
 using Full_Stack_Food_Truck_Application.Services;
+using Full_Stack_Food_Truck_Application.Data.Repositories;
 
 namespace Full_Stack_Food_Truck_Application
 {
@@ -87,7 +88,13 @@ namespace Full_Stack_Food_Truck_Application
             });
 
             services.AddScoped<IUserServices, UserServices>();
+            services.AddTransient<IUserRepository, UserRepository>();
 
+            services.AddScoped<IFavoriteService, FavoriteService>();
+            services.AddTransient<IFavoritesRepository, FavoritesRepository>();
+
+            services.AddScoped<ICoordinateService, CoordinateService>();
+            services.AddTransient<ICoordinateRepository, CoordinateRepository>();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

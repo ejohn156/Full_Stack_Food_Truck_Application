@@ -3,15 +3,17 @@ using System;
 using Full_Stack_Food_Truck_Application.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Full_Stack_Food_Truck_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200505185436_setting_up_coordinates")]
+    partial class setting_up_coordinates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +32,6 @@ namespace Full_Stack_Food_Truck_Application.Migrations
 
                     b.Property<float>("Longitude")
                         .HasColumnType("real");
-
-                    b.Property<string>("Truck_Id")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -65,9 +64,6 @@ namespace Full_Stack_Food_Truck_Application.Migrations
 
                     b.Property<decimal>("Rating")
                         .HasColumnType("numeric");
-
-                    b.Property<string>("Truck_Id")
-                        .HasColumnType("text");
 
                     b.Property<string>("Truck_Name")
                         .HasColumnType("text");

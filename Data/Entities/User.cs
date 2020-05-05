@@ -12,6 +12,6 @@ namespace Full_Stack_Food_Truck_Application.Data.Entities
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public IEnumerable<Favorite> Favorites { get; set; }
+        public ICollection<Favorite> Favorites { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Full_Stack_Food_Truck_Application.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Full_Stack_Food_Truck_Application.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200505193553_setting_up_coordinates3")]
+    partial class setting_up_coordinates3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,14 +27,14 @@ namespace Full_Stack_Food_Truck_Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("text");
 
+                    b.Property<string>("Favorite_Id")
+                        .HasColumnType("text");
+
                     b.Property<float>("Latitude")
                         .HasColumnType("real");
 
                     b.Property<float>("Longitude")
                         .HasColumnType("real");
-
-                    b.Property<string>("Truck_Id")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -66,15 +68,13 @@ namespace Full_Stack_Food_Truck_Application.Migrations
                     b.Property<decimal>("Rating")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Truck_Id")
-                        .HasColumnType("text");
-
                     b.Property<string>("Truck_Name")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Coordinate_Id");
+                    b.HasIndex("Coordinate_Id")
+                        .IsUnique();
 
                     b.HasIndex("Creator_Id");
 
@@ -110,8 +110,8 @@ namespace Full_Stack_Food_Truck_Application.Migrations
             modelBuilder.Entity("Full_Stack_Food_Truck_Application.Data.Entities.Favorite", b =>
                 {
                     b.HasOne("Full_Stack_Food_Truck_Application.Data.Entities.Coordinates", "Coordinates")
-                        .WithMany()
-                        .HasForeignKey("Coordinate_Id");
+                        .WithOne("Favorite")
+                        .HasForeignKey("Full_Stack_Food_Truck_Application.Data.Entities.Favorite", "Coordinate_Id");
 
                     b.HasOne("Full_Stack_Food_Truck_Application.Data.Entities.User", "CreatedBy")
                         .WithMany("Favorites")

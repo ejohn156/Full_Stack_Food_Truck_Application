@@ -11,6 +11,7 @@ namespace Full_Stack_Food_Truck_Application.Helpers
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Coordinates> Coordinates { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

@@ -85,14 +85,11 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             try
             {
                 var users = _userService.GetAll();
-                Console.WriteLine(users); 
-                Console.WriteLine(_mapper.Map<List<GetUserModel>>(users));
                 var returnObject = _mapper.Map<List<GetUserModel>>(users);
-                Console.WriteLine(returnObject);
                 return Ok(returnObject);
             }
-            catch
-            { return BadRequest("Invalid request"); }
+            catch(AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
 
         }
         //get individual user

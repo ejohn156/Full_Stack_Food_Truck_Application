@@ -8,6 +8,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         public float Latitude { get; set; }
-        public float Longitude { get; set; }       
+        public float Longitude { get; set; }
+        public string Truck_Id { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         public string Truck_Name { get; set; }
+        public string Truck_Id { get; set; }
         public string Price { get; set; }
         public decimal Rating { get; set; }
         public string Phone_Number { get; set; }
