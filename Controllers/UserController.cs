@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AutoMapper;
+using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Helpers;
 using Full_Stack_Food_Truck_Application.Models.UserModels;
 using Full_Stack_Food_Truck_Application.Services;
@@ -31,7 +33,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
         }
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate([FromBody]AuthenticateUserModel model) {
+        public IActionResult Authenticate([FromBody]AuthenticateUserModel model)
+        {
             var userToAuthenticate = _userService.Authenticate(model.Email, model.Password);
             if (userToAuthenticate == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -59,6 +62,76 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 userToAuthenticate.Last_Name,
                 Token = tokenString
             });
+        }
+        [HttpPost("Signup")]
+        public IActionResult Signup([FromBody] CreateUserModel model, string password)
+        {
+            try
+            {
+                var newUser = _mapper.Map<User>(model);
+                return Ok(_userService.Create(newUser, password));
+            }
+            catch
+            {
+                return BadRequest("Unable to create user, user either exists or credentials are invalid");
+            }
+        }
+        //get all users
+        [HttpGet("")]
+        public IActionResult GetAllUsers()
+        {
+            try
+            {
+                var users = _userService.GetAll();
+                var returnObject = _mapper.Map<List<GetUserModel>>(users);
+                return Ok(returnObject);
+            }
+            catch
+            { return BadRequest("Invalid request"); }
+
+        }
+        //get individual user
+        [HttpGet("{Id}")]
+        public IActionResult GetUser(string Id)
+        {
+            try
+            {
+                var user = _userService.GetById(Id);
+                var returnObject = _mapper.Map<GetUserModel>(user);
+                return Ok(returnObject);
+            }
+            catch
+            {
+                return BadRequest("Invalid request");
+            }
+        }
+        //update user
+        [HttpPost("Update")]
+        public IActionResult UpdateUser([FromBody]UpdateUserModel model, string password)
+        {
+            try
+            {
+                var userToUpdate = _mapper.Map<User>(model);
+                _userService.Update(userToUpdate, password);
+                return Ok("User has been Updated successfully");
+            }
+            catch
+            {
+                return BadRequest("Update has failed due to invalid request or incorrect credentials");
+            }
+        }
+        [HttpPut("Delete")]
+        public IActionResult DeleteUser([FromBody]string Id)
+        {
+            try
+            {
+                _userService.Delete(Id);
+                return Ok("User has successfully been deleted");
+            }
+            catch
+            {
+                return BadRequest("Invalid request");
+            }
         }
     }
 }

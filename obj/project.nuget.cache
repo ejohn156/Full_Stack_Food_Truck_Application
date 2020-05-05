@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cO98TFDPHJsK2MEfhTlFDwDrZtd/XdiWfx+kv+KwkQFzFauCtMclABHupBFTlazmsISfptYiL6AGYrVh8CUdgQ==",
+  "dgSpecHash": "2eKSob1quKfhevvuodH6CXQyNiWNPm5WzLlnrtCkd2G45yrc+pTWLJ3GJrr5qLsmkWfYeYN26X9NW5MhRf/+zw==",
   "success": true,
-  "projectFilePath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
+  "projectFilePath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
   "expectedPackageFiles": [
     "/Users/ericjohnson/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
     "/Users/ericjohnson/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.1.3/microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",

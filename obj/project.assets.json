@@ -5710,11 +5710,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
+      "projectUniqueName": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
       "projectName": "Full_Stack_Food_Truck_Application",
-      "projectPath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
+      "projectPath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
       "packagesPath": "/Users/ericjohnson/.nuget/packages/",
-      "outputPath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/obj/",
+      "outputPath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
