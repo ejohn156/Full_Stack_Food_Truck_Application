@@ -63,13 +63,14 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 Token = tokenString
             });
         }
+        [AllowAnonymous]
         [HttpPost("Signup")]
-        public IActionResult Signup([FromBody] CreateUserModel model, string password)
+        public IActionResult Signup([FromBody] CreateUserModel model)
         {
             try
             {
                 var newUser = _mapper.Map<User>(model);
-                return Ok(_userService.Create(newUser, password));
+                return Ok(_userService.Create(newUser, model.password));
             }
             catch
             {
@@ -80,10 +81,14 @@ namespace Full_Stack_Food_Truck_Application.Controllers
         [HttpGet("")]
         public IActionResult GetAllUsers()
         {
+            Console.WriteLine("getAllUsers has been called");
             try
             {
                 var users = _userService.GetAll();
+                Console.WriteLine(users); 
+                Console.WriteLine(_mapper.Map<List<GetUserModel>>(users));
                 var returnObject = _mapper.Map<List<GetUserModel>>(users);
+                Console.WriteLine(returnObject);
                 return Ok(returnObject);
             }
             catch
@@ -106,13 +111,14 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             }
         }
         //update user
-        [HttpPost("Update")]
-        public IActionResult UpdateUser([FromBody]UpdateUserModel model, string password)
+        [HttpPut("{Id}")]
+        public IActionResult UpdateUser(string Id, [FromBody]UpdateUserModel model)
         {
             try
             {
                 var userToUpdate = _mapper.Map<User>(model);
-                _userService.Update(userToUpdate, password);
+                userToUpdate.Id = Id;
+                _userService.Update(userToUpdate, model.Password);
                 return Ok("User has been Updated successfully");
             }
             catch
@@ -120,8 +126,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 return BadRequest("Update has failed due to invalid request or incorrect credentials");
             }
         }
-        [HttpPut("Delete")]
-        public IActionResult DeleteUser([FromBody]string Id)
+        [HttpPost("Delete/{Id}")]
+        public IActionResult DeleteUser(string Id)
         {
             try
             {

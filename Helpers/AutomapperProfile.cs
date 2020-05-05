@@ -14,7 +14,7 @@ namespace Full_Stack_Food_Truck_Application.Helpers
             CreateMap<AuthenticateUserModel, User>();
             CreateMap<CreateUserModel, User>();
             CreateMap<DeleteUserModel, User>();
-            CreateMap<GetUserModel, User>();
+            CreateMap<User, GetUserModel>();
             CreateMap<UpdateUserModel, User>();
             CreateMap<GetCoordinatesModel, Coordinates>();
             CreateMap<GetFavoriteModel, Favorite>();

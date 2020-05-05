@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Threading.Tasks;
+using Full_Stack_Food_Truck_Application.Services;
 
 namespace Full_Stack_Food_Truck_Application
 {
@@ -63,14 +64,14 @@ namespace Full_Stack_Food_Truck_Application
                 {
                     OnTokenValidated = context =>
                     {
-                        /*var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserServices>();
+                        var userId = context.Principal.Identity.Name;
                         var user = userService.GetById(userId);
                         if (user == null)
                         {
                             // return unauthorized if user no longer exists
                             context.Fail("Unauthorized");
-                        }*/
+                        }
                         return Task.CompletedTask;
                     }
                 };
@@ -85,8 +86,7 @@ namespace Full_Stack_Food_Truck_Application
                 };
             });
 
-            //services.AddScoped<IFavoriteRepository, FavoriteRepository>();
-            //services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserServices, UserServices>();
 
 
             // In production, the React files will be served from this directory
@@ -115,6 +115,14 @@ namespace Full_Stack_Food_Truck_Application
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

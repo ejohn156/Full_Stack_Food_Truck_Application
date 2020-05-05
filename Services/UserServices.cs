@@ -42,7 +42,8 @@ namespace Full_Stack_Food_Truck_Application.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _context.Users;
+            var users = _context.Users;
+            return users;
         }
 
         public User GetById(string id)
