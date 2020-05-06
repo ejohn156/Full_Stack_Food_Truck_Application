@@ -12,6 +12,7 @@ namespace Full_Stack_Food_Truck_Application.Helpers
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Coordinates> Coordinates { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -28,6 +29,10 @@ namespace Full_Stack_Food_Truck_Application.Helpers
             modelBuilder.Entity<User>()
                 .HasMany(s => s.Favorites)
                 .WithOne(s => s.CreatedBy);
+
+            modelBuilder.Entity<Category>()
+                .HasOne(s => s.Favorite)
+                .WithMany(s => s.Categories);
         }
     }
 }

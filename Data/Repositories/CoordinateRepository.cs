@@ -30,8 +30,11 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
         public void DeleteCoordinate(string Id)
         {
             var coordinateToDelete = _context.Coordinates.Find(Id);
-            _context.Coordinates.Remove(coordinateToDelete);
-            _context.SaveChanges();
+            if (coordinateToDelete != null)
+            {
+                _context.Coordinates.Remove(coordinateToDelete);
+                _context.SaveChanges();
+            }
         }
     }
 }

@@ -72,16 +72,13 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 var newUser = _mapper.Map<User>(model);
                 return Ok(_userService.Create(newUser, model.password));
             }
-            catch
-            {
-                return BadRequest("Unable to create user, user either exists or credentials are invalid");
-            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
         //get all users
         [HttpGet("")]
         public IActionResult GetAllUsers()
         {
-            Console.WriteLine("getAllUsers has been called");
             try
             {
                 var users = _userService.GetAll();
@@ -102,10 +99,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 var returnObject = _mapper.Map<GetUserModel>(user);
                 return Ok(returnObject);
             }
-            catch
-            {
-                return BadRequest("Invalid request");
-            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
         //update user
         [HttpPut("{Id}")]
@@ -118,10 +113,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 _userService.Update(userToUpdate, model.Password);
                 return Ok("User has been Updated successfully");
             }
-            catch
-            {
-                return BadRequest("Update has failed due to invalid request or incorrect credentials");
-            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
         [HttpPost("Delete/{Id}")]
         public IActionResult DeleteUser(string Id)
@@ -131,10 +124,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 _userService.Delete(Id);
                 return Ok("User has successfully been deleted");
             }
-            catch
-            {
-                return BadRequest("Invalid request");
-            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
     }
 }

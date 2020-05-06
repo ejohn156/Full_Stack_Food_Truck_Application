@@ -96,6 +96,9 @@ namespace Full_Stack_Food_Truck_Application
             services.AddScoped<ICoordinateService, CoordinateService>();
             services.AddTransient<ICoordinateRepository, CoordinateRepository>();
 
+            services.AddScoped<ICategoryServices, CategoryServices>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

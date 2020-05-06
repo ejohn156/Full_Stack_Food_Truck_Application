@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using Full_Stack_Food_Truck_Application.Data.Entities;
+using Full_Stack_Food_Truck_Application.Models.CategoryModels;
 using Full_Stack_Food_Truck_Application.Models.CoordinateModel;
 using Full_Stack_Food_Truck_Application.Models.FavoriteModels;
 using Full_Stack_Food_Truck_Application.Models.UserModels;
@@ -23,6 +24,12 @@ namespace Full_Stack_Food_Truck_Application.Helpers
             CreateMap<User, GetUserOfFavoriteModel>();
             CreateMap<Coordinates, GetCoordinatesModel>();
             CreateMap<Favorite, GetFavoritesOfUser>();
+            CreateMap<CreateCategoryModel, Category>();
+            CreateMap<UpdateCategoryModel, Category>();
+            CreateMap<Category, GetCategoryModel>();
+            CreateMap<Favorite, GetFavoriteOfCategoryModel>();
+            CreateMap<CreateFavoriteModelWithCategories, CreateFavoriteModel>();
+
         }
     }
 }

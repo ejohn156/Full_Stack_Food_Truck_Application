@@ -13,7 +13,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Entities
         public string Price { get; set; }
         public decimal Rating { get; set; }
         public string Phone_Number { get; set; }
-        public string[] Categories { get; set; }
+        public ICollection<Category> Categories { get; set; }
         public string Coordinate_Id { get; set; }
         [ForeignKey("Coordinate_Id")]
         public Coordinates Coordinates { get; set; }

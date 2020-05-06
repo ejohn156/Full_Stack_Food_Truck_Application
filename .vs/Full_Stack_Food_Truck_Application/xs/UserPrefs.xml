@@ -1,34 +1,16 @@
 ﻿<Properties StartupConfiguration="{19ECCE3F-72EA-4C34-8494-2BB98652D6ED}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/UserModels/GetFavoritesOfUser.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Entities/Favorite.cs">
     <Files>
-      <File FileName="Helpers/AutomapperProfile.cs" Line="22" Column="55" />
-      <File FileName="Controllers/UserController.cs" Line="84" Column="50" />
-      <File FileName="Services/UserServices.cs" Line="96" Column="14" />
-      <File FileName="Models/UserModels/CreateUserModel.cs" Line="14" Column="19" />
-      <File FileName="Controllers/APIController.cs" Line="1" Column="1" />
-      <File FileName="Startup.cs" Line="96" Column="13" />
-      <File FileName="Models/UserModels/GetUserModel.cs" Line="13" Column="30" />
-      <File FileName="Data/Entities/User.cs" Line="14" Column="49" />
-      <File FileName="Models/UserModels/AuthenticateUserModel.cs" Line="10" Column="19" />
-      <File FileName="Models/UserModels/DeleteUserModel.cs" Line="1" Column="1" />
-      <File FileName="Models/UserModels/UpdateUserModel.cs" Line="5" Column="6" />
-      <File FileName="Data/Repositories/UserRepository.cs" Line="48" Column="10" />
-      <File FileName="Data/Repositories/FavoritesRepository.cs" Line="33" Column="95" />
-      <File FileName="Services/FavoriteService.cs" Line="14" Column="6" />
-      <File FileName="Controllers/FavoriteController.cs" Line="34" Column="26" />
-      <File FileName="Models/FavoriteModels/CreateFavoriteModel.cs" Line="15" Column="47" />
-      <File FileName="Models/FavoriteModels/GetFavoriteModel.cs" Line="9" Column="9" />
-      <File FileName="Data/Entities/Favorite.cs" Line="22" Column="1" />
-      <File FileName="Data/Entities/Coordinates.cs" Line="12" Column="43" />
-      <File FileName="Helpers/DataContext.cs" Line="27" Column="1" />
-      <File FileName="Services/CoordinateServices.cs" Line="24" Column="24" />
-      <File FileName="Data/Repositories/CoordinateRepository.cs" Line="25" Column="45" />
-      <File FileName="Models/FavoriteModels/GetUserOfFavoriteModel.cs" Line="9" Column="42" />
-      <File FileName="Models/CoordinateModel/GetCoordinatesModel.cs" Line="10" Column="1" />
-      <File FileName="Models/CoordinateModel/CreateCoordinateModel.cs" Line="11" Column="1" />
-      <File FileName="Helpers/AppException.cs" Line="1" Column="1" />
-      <File FileName="Helpers/AppSettings.cs" Line="1" Column="1" />
-      <File FileName="Models/UserModels/GetFavoritesOfUser.cs" Line="13" Column="45" />
+      <File FileName="Controllers/FavoriteController.cs" Line="78" Column="64" />
+      <File FileName="Models/FavoriteModels/CreateFavoriteModel.cs" Line="10" Column="49" />
+      <File FileName="Data/Entities/Favorite.cs" Line="16" Column="27" />
+      <File FileName="Helpers/AutomapperProfile.cs" Line="31" Column="56" />
+      <File FileName="Models/FavoriteModels/CreateFavoriteModelWithCategories.cs" Line="15" Column="47" />
+      <File FileName="Controllers/CategoryController.cs" Line="43" Column="63" />
+      <File FileName="Services/CategoryServices.cs" Line="14" Column="30" />
+      <File FileName="Data/Repositories/CategoryRepository.cs" Line="24" Column="10" />
+      <File FileName="Models/CategoryModels/GetFavoriteOfCategoryModel.cs" Line="1" Column="1" />
+      <File FileName="Data/Entities/Category.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -37,15 +19,16 @@
             <Node name="Full_Stack_Food_Truck_Application" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True">
+                <Node name="Entities" expanded="True">
+                  <Node name="Favorite.cs" selected="True" />
+                </Node>
                 <Node name="Repositories" expanded="True" />
               </Node>
               <Node name="Helpers" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="CoordinateModel" expanded="True" />
+                <Node name="CategoryModels" expanded="True" />
                 <Node name="FavoriteModels" expanded="True" />
-                <Node name="UserModels" expanded="True">
-                  <Node name="GetFavoritesOfUser.cs" selected="True" />
-                </Node>
+                <Node name="UserModels" expanded="True" />
               </Node>
               <Node name="Services" expanded="True" />
             </Node>
