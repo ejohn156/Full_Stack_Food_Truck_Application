@@ -86,7 +86,7 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             try
             {
                 var users = _userService.GetAll();
-                var returnObject = _mapper.Map<IEnumerable<GetUserModel>>(users);
+                var returnObject = _mapper.Map<List<GetUserModel>>(users);
                 return Ok(returnObject);
             }
             catch(AppException ex)

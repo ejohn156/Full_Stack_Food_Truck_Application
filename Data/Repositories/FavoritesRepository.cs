@@ -39,13 +39,6 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
             _context.SaveChanges();
             return fav;
         }
-        //will work to update favorite at another time, as data within this will come from yelp API
-        //public void UpdateFavorite(Favorite fav)
-        //{
-        //    var favToUpdate = _context.Favorites.Find(fav.Id);
-        //    favToUpdate.
-
-        //}
         public void DeleteFavorite(string Id)
         {
             var FavoriteToDelete = _context.Favorites.Find(Id);
