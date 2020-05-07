@@ -1,5 +1,5 @@
 {
-  "FilePath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
+  "FilePath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Full_Stack_Food_Truck_Application.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20611,13 +20611,13 @@
   "RootNamespace": "Full_Stack_Food_Truck_Application",
   "Documents": [
     {
-      "FilePath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Pages/Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
+      "FilePath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Pages/_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/ericjohnson/Desktop/personal_projects/Full_Stack_Food_Truck_Application/Pages/_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FilePath": "/Users/ericjohnson/Desktop/Full_Stack_Food_Truck_Application/Pages/Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     }
   ],
