@@ -22,34 +22,60 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             _mapper = mapper;
         }
         [HttpPost("Create")]
-        public void CreateCategory(CreateCategoryModel newCategory)
+        public IActionResult CreateCategory([FromBody]CreateCategoryModel newCategory)
         {
-            var categoryToCreate = _mapper.Map<Category>(newCategory);
-            _categoryService.CreateCategory(categoryToCreate);
+            try
+            {
+                var categoryToCreate = _mapper.Map<Category>(newCategory);
+                _categoryService.CreateCategory(categoryToCreate);
+                return Ok("Category has been successfully created");
+            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
-        [HttpDelete("{id}")]
-        public void deleteCategory(string Id)
+        [HttpPost("Delete/{Id}")]
+        public IActionResult deleteCategory(string Id)
         {
-            _categoryService.deleteCategory(Id);
+            try
+            {
+                _categoryService.deleteCategory(Id);
+                return Ok("Category has been successfully deleted");
+            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
 
         }
         [HttpPut("")]
-        public void updateCategory(UpdateCategoryModel updatedCategory)
+        public IActionResult updateCategory([FromBody]UpdateCategoryModel updatedCategory)
         {
-            var categoryToUpdate = _mapper.Map<Category>(updatedCategory);
-            _categoryService.updateCategory(categoryToUpdate);
+            try
+            {
+                var categoryToUpdate = _mapper.Map<Category>(updatedCategory);
+                _categoryService.updateCategory(categoryToUpdate);
+                return Ok("Category has been successfully updated");
+            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
         [HttpGet("")]
         public IActionResult getAllCategories()
         {
-            return Ok(_mapper.Map<List<GetCategoryModel>>(_categoryService.getAllCategories()));
+            try {
+                return Ok(_mapper.Map<List<GetCategoryModel>>(_categoryService.getAllCategories()));
+            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
         }
         [HttpGet("{categoryName}")]
         public IActionResult getAllCategoriesByName(string categoryName)
         {
-            
-            return Ok(_mapper.Map<List<GetCategoryModel>>(_categoryService.getAllCategoriesByName(categoryName)));
-               
+
+            try {
+                return Ok(_mapper.Map<List<GetCategoryModel>>(_categoryService.getAllCategoriesByName(categoryName)));
+            }
+            catch (AppException ex)
+            { return BadRequest(new { message = ex.Message }); }
+
         }
     }
 }

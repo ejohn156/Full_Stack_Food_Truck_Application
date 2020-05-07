@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Data.Repositories;
 
@@ -8,16 +9,22 @@ namespace Full_Stack_Food_Truck_Application.Services
     public interface IFavoriteService
     {
         Favorite CreateFavorite(Favorite favoriteToCreate);
-        void DeleteFavorite(string Id);
+        Task DeleteFavorite(string Id);
+        Task DeleteListOfFavorites(List<string> listOfFavoriteIds);
         IEnumerable<Favorite> GetAllFavorites();
         Favorite getFavorite(string Id);
     }
     public class FavoriteService : IFavoriteService
     {
         private IFavoritesRepository _favRepo;
-        public FavoriteService(IFavoritesRepository favRepo)
+        private ICategoryServices _categoryService;
+        private ICoordinateService _coordinateService;
+
+        public FavoriteService(IFavoritesRepository favRepo, ICategoryServices categoryService, ICoordinateService coordinateService)
         {
             _favRepo = favRepo;
+            _categoryService = categoryService;
+            _coordinateService = coordinateService;
         }
 
         public Favorite getFavorite(string Id)
@@ -53,11 +60,34 @@ namespace Full_Stack_Food_Truck_Application.Services
                 throw ex;
             }
         }
-        public void DeleteFavorite(string Id)
+        public async Task DeleteFavorite(string Id)
         {
             try
             {
+                var favToDelete = getFavorite(Id);
+                var coordinateId = favToDelete.Coordinate_Id;
+
+                await _categoryService.DeleteCategoriesOfFavorite(Id);
+
                 _favRepo.DeleteFavorite(Id);
+                _coordinateService.DeleteCoordinate(coordinateId);
+
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task DeleteListOfFavorites(List<string> listOfFavoriteIds)
+        {
+            try
+            {
+
+                foreach (string Id in listOfFavoriteIds)
+                {
+                    await DeleteFavorite(Id);
+                }
             }
             catch (Exception ex)
             {

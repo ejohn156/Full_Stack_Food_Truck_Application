@@ -29,6 +29,7 @@ namespace Full_Stack_Food_Truck_Application.Helpers
             CreateMap<Category, GetCategoryModel>();
             CreateMap<Favorite, GetFavoriteOfCategoryModel>();
             CreateMap<CreateFavoriteModelWithCategories, CreateFavoriteModel>();
+            CreateMap<Category, getCategoriesOfFavorite>();
 
         }
     }

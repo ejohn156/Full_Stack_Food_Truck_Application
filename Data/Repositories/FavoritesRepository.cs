@@ -26,11 +26,11 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
 
         public IEnumerable<Favorite> GetAllFavorites()
         {
-            return _context.Favorites.Include("Coordinates");
+            return _context.Favorites.Include("Coordinates").Include("Categories");
         }
         public Favorite GetFavorite(string Id)
         {
-            return _context.Favorites.Include("Coordinates").Where(x => x.Id.Equals(Id)).SingleOrDefault();
+            return _context.Favorites.Include("Coordinates").Include("Categories").Where(x => x.Id.Equals(Id)).SingleOrDefault();
         }
         public Favorite CreateFavorite(Favorite fav)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using AutoMapper;
 using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Helpers;
@@ -19,15 +20,18 @@ namespace Full_Stack_Food_Truck_Application.Controllers
     public class UserController : APIController
     {
         private readonly IUserServices _userService;
+        private readonly IFavoriteService _favService;
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
 
         public UserController(
                    IUserServices userService,
+                   IFavoriteService favService,
                    IMapper mapper,
                    IOptions<AppSettings> appSettings)
         {
             _userService = userService;
+            _favService = favService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
         }
@@ -82,7 +86,7 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             try
             {
                 var users = _userService.GetAll();
-                var returnObject = _mapper.Map<List<GetUserModel>>(users);
+                var returnObject = _mapper.Map<IEnumerable<GetUserModel>>(users);
                 return Ok(returnObject);
             }
             catch(AppException ex)
@@ -117,10 +121,16 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             { return BadRequest(new { message = ex.Message }); }
         }
         [HttpPost("Delete/{Id}")]
-        public IActionResult DeleteUser(string Id)
+        public async Task<IActionResult> DeleteUser(string Id)
         {
             try
             {
+                var user = _userService.GetById(Id);
+                var favIdList = new List<string>();
+                foreach (Favorite favorite in user.Favorites) {
+                    favIdList.Add(favorite.Id);
+                }
+                await _favService.DeleteListOfFavorites(favIdList);
                 _userService.Delete(Id);
                 return Ok("User has successfully been deleted");
             }

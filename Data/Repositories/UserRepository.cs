@@ -43,13 +43,13 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            var users = _context.Users.Include("Favorites").Include("Favorites.Coordinates");
+            var users = _context.Users;
             return users;
         }
 
         public User GetById(string Id)
         {
-            return _context.Users.Include("Favorites").Include("Favorites.Coordinates").Where(x => x.Id.Equals(Id)).SingleOrDefault();
+            return _context.Users.Include("Favorites").Include("Favorites.Coordinates").Include("Favorites.Categories").Where(x => x.Id.Equals(Id)).SingleOrDefault();
         }
 
         public User Create(User user, string password)

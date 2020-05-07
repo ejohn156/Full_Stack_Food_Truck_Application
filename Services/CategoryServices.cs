@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Data.Repositories;
 
@@ -12,6 +13,7 @@ namespace Full_Stack_Food_Truck_Application.Services
         IEnumerable<Category> getAllCategories();
         IEnumerable<Category> getAllCategoriesByName(string categoryName);
         void updateCategory(Category updatedCategory);
+        Task DeleteCategoriesOfFavorite(string Id);
     }
     public class CategoryServices : ICategoryServices
     {
@@ -34,7 +36,9 @@ namespace Full_Stack_Food_Truck_Application.Services
         {
             _categoryRepo.updateCategory(updatedCategory);
         }
-
+        public async Task DeleteCategoriesOfFavorite(string Id) {
+            await _categoryRepo.DeleteCategoriesOfFavorite(Id);
+        }
         public IEnumerable<Category> getAllCategories()
         {
             return _categoryRepo.getAllCategories();

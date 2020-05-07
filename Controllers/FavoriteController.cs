@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Helpers;
@@ -20,7 +21,7 @@ namespace Full_Stack_Food_Truck_Application.Controllers
         private readonly AppSettings _appSettings;
         private readonly ICoordinateService _coordService;
         private readonly ICategoryServices _categoryService;
-
+        
         public FavoriteController(
                    IFavoriteService favService,
                    IMapper mapper,
@@ -80,7 +81,6 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                     newCategory.Name = category;
                     newCategory.Favorite_Id = createdFav.Id;
                     var categoryToCreate = _mapper.Map<Category>(newCategory);
-                    Console.WriteLine(categoryToCreate);
                     _categoryService.CreateCategory(categoryToCreate);
                 }
                 return Ok(createdFav);
@@ -89,14 +89,11 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             { return BadRequest(new { message = ex.Message }); }
         }
         [HttpPost("Delete/{Id}")]
-        public IActionResult DeleteFavorite(string Id)
+         public async Task<IActionResult> DeleteFavorite(string Id)
         {
             try
             {
-                var favToDelete = _favService.getFavorite(Id);
-                var coordinateId = favToDelete.Coordinate_Id;
-                _favService.DeleteFavorite(Id);
-                _coordService.DeleteCoordinate(coordinateId);
+                await _favService.DeleteFavorite(Id);
                 return Ok("Favorite has been deleted");
             }
             catch (AppException ex)

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Full_Stack_Food_Truck_Application.Data.Entities;
 using Full_Stack_Food_Truck_Application.Helpers;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
         IEnumerable<Category> getAllCategories();
         IEnumerable<Category> getAllCategoriesByName(string categoryName);
         void updateCategory(Category updatedCategory);
+        Task DeleteCategoriesOfFavorite(string Id);
     }
     public class CategoryRepository : ICategoryRepository
     {
@@ -29,7 +31,6 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
         {
             try
             {
-                Console.WriteLine("category getting to repo");
                 _context.Categories.Add(newCategory);
                 _context.SaveChanges();
             }
@@ -46,6 +47,20 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
                 _context.SaveChanges();
             }
 
+        }
+        public async Task DeleteCategoriesOfFavorite(string Id)
+        {
+
+            try
+            {
+                var categoriesToRemove = _context.Categories.ToList().Where(s => s.Favorite_Id == Id);
+                _context.Categories.RemoveRange(categoriesToRemove);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
         }
         public void updateCategory(Category updatedCategory)
         {
