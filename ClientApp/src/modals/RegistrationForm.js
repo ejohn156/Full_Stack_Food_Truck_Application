@@ -19,10 +19,8 @@ export default class RegistrationForm extends Component {
     this.state.formType === "Login" ?
       this.setState({ formType: "Signup" }) : this.setState({ formType: "Login" })
   }
-  submitForm(){
-    this.state.formType === "Login" ?
-      console.log("submit form for Login") : console.log("submit form for Sign-up")
-  }
+
+  
   
 
   render() {
@@ -48,7 +46,7 @@ export default class RegistrationForm extends Component {
             <Button variant="secondary" onClick={this.props.closeRegistrationForm}>
               Close
           </Button>
-            <Button variant="success" onClick={() => this.submitForm()}>
+            <Button variant="success" onClick={this.props.submitRegistrationForm}>
               Submit
           </Button>
           </Modal.Footer>

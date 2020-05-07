@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './layout/Layout'
-import MapPage  from './pages/MapPage';
-
+import MapPage  from './pages/MapPage/MapPage';
+import profilePage from './pages/ProfilePage/ProfilePage'
 import './custom.css'
 
 export default class App extends Component {
@@ -13,6 +13,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={MapPage} />
         <Route path='/Map' component={MapPage} />
+        <Route path='/Profile' component={profilePage} />
         </Layout>
     );
   }
