@@ -6,5 +6,5 @@ export function LOG_OUT(){
 }
 
 export function UPDATE_PROFILE(updatedProfile){
-    return {type: LOG_OUT, updatedProfile}
+    return {type: UPDATE_PROFILE, updatedProfile}
 }

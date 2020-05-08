@@ -43,7 +43,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            var users = _context.Users;
+            var users = _context.Users.Include("Favorites").Include("Favorites.Coordinates").Include("Favorites.Categories");
             return users;
         }
 
