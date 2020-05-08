@@ -21,7 +21,7 @@ export class NavMenu extends Component {
     };
 
     this.closeRegistrationForm = this.closeRegistrationForm.bind(this)
-    //this.submitRegistrationForm = this.submitRegistrationForm.bind(this)
+
   }
 
   toggleNavbar() {
@@ -59,7 +59,6 @@ export class NavMenu extends Component {
                   <NavigationLink linkName="Profile"></NavigationLink>
                   </>
                   }
-                
               </ul>
             </Collapse>
             <SearchBar/>
