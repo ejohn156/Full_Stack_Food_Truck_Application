@@ -21,7 +21,7 @@ export class NavMenu extends Component {
     };
 
     this.closeRegistrationForm = this.closeRegistrationForm.bind(this)
-    this.submitRegistrationForm = this.submitRegistrationForm.bind(this)
+    //this.submitRegistrationForm = this.submitRegistrationForm.bind(this)
   }
 
   toggleNavbar() {
@@ -40,11 +40,7 @@ export class NavMenu extends Component {
         this.setState({showRegistrationForm : !this.state.showRegistrationForm})
     }
     //temporary until store holding users info is created
-    submitRegistrationForm(){
-      alert("user has been registered")
-      this.setState({userRegistered : true,
-        showRegistrationForm : !this.state.showRegistrationForm})
-  }
+    
 
   render() {
     return (

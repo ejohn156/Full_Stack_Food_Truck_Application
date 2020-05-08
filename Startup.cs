@@ -119,17 +119,20 @@ namespace Full_Stack_Food_Truck_Application
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            //disabled for testing enable for prod?
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
             app.UseRouting();
 
-            app.UseCors(x => x
-                .AllowAnyOrigin()
+            app.UseCors(builder =>
+                builder
+                .WithOrigins("https://localhost:5001")
+                .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowCredentials()
+  );
 
             app.UseAuthentication();
             app.UseAuthorization();
