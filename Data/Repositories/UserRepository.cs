@@ -29,7 +29,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
         public User Authenticate(string email, string password)
         {
 
-            var userToAuthenticate = _context.Users.SingleOrDefault(u => u.Email == email);
+            var userToAuthenticate = _context.Users.Include("Favorites").SingleOrDefault(u => u.Email == email);
 
             if (userToAuthenticate != null && VerifyPasswordHash(password, userToAuthenticate.PasswordHash, userToAuthenticate.PasswordSalt))
             {

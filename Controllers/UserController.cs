@@ -64,6 +64,7 @@ namespace Full_Stack_Food_Truck_Application.Controllers
                 userToAuthenticate.Email,
                 userToAuthenticate.First_Name,
                 userToAuthenticate.Last_Name,
+                userToAuthenticate.Favorites,
                 Token = tokenString
             });
         }

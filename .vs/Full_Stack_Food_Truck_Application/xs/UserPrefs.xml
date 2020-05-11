@@ -1,24 +1,29 @@
 ﻿<Properties StartupConfiguration="{19ECCE3F-72EA-4C34-8494-2BB98652D6ED}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/UserModels/GetUserModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/UserController.cs">
     <Files>
       <File FileName="Data/Repositories/FavoritesRepository.cs" Line="1" Column="1" />
-      <File FileName="Data/Repositories/UserRepository.cs" />
+      <File FileName="Data/Repositories/UserRepository.cs" Line="35" Column="14" />
       <File FileName="Services/UserServices.cs" />
       <File FileName="Services/FavoriteService.cs" />
-      <File FileName="Controllers/UserController.cs" Line="33" Column="40" />
+      <File FileName="Controllers/UserController.cs" Line="65" Column="47" />
       <File FileName="Models/UserModels/AuthenticateUserModel.cs" Line="1" Column="1" />
       <File FileName="Models/UserModels/GetUserModel.cs" Line="1" Column="1" />
+      <File FileName="Data/Entities/User.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Full_Stack_Food_Truck_Application" expanded="True">
             <Node name="Full_Stack_Food_Truck_Application" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UserController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True">
+                <Node name="Entities" expanded="True" />
+                <Node name="Repositories" expanded="True" />
+              </Node>
               <Node name="Models" expanded="True">
-                <Node name="UserModels" expanded="True">
-                  <Node name="GetUserModel.cs" selected="True" />
-                </Node>
+                <Node name="UserModels" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -6,8 +6,15 @@ import './NavMenu.css';
 import RegistrationForm from '../../modals/RegistrationForm'
 import NavigationLink from '../NavigationLink/NavigationLink'
 import SearchBar from '../SearchBar/SearchBar'
+import { connect } from 'react-redux'
 
-export class NavMenu extends Component {
+function mapStateToProps(state) {
+  return ({
+    profile: state.Profile
+  })
+}
+
+class NavMenu extends Component {
   static displayName = NavMenu.name;
 
   constructor(props) {
@@ -17,7 +24,7 @@ export class NavMenu extends Component {
     this.state = {
       collapsed: true,
       showRegistrationForm: false,
-      userRegistered: false
+      profile: this.props.profile
     };
 
     this.closeRegistrationForm = this.closeRegistrationForm.bind(this)
@@ -41,6 +48,14 @@ export class NavMenu extends Component {
     }
     //temporary until store holding users info is created
     
+    componentDidUpdate(){
+      console.log(this.props.profile)
+      if(this.state.profile !== this.props.profile){
+        this.setState({
+          profile: this.props.profile
+        })
+      }
+    }
 
   render() {
     return (
@@ -52,7 +67,7 @@ export class NavMenu extends Component {
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
-                  {!this.state.userRegistered ? <Button variant="info" onClick={() => this.Register()}>Register</Button>
+                  {!this.state.profile.Id ? <Button variant="info" onClick={() => this.Register()}>Register</Button>
                   : 
                   <>
                   <NavigationLink linkName="Map"></NavigationLink>
@@ -70,3 +85,4 @@ export class NavMenu extends Component {
     );
   }
 }
+export default connect(mapStateToProps)(NavMenu)

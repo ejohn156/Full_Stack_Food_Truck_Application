@@ -2,17 +2,19 @@ import {LOG_IN, LOG_OUT, UPDATE_PROFILE} from './profile.action'
 
 const initialState = {
     Profile: {
-        id: null,
-        first_Name: null,
-        last_Name: null,
-        email: null,
-        favorites: []
+        Id: null,
+        First_Name: null,
+        Last_Name: null,
+        Email: null,
+        Favorites: [],
+        Token: null
     }
 }
 
 function UserReducer (state = initialState, action) {
    switch(action.type) {
-       case LOG_IN: return Object.assign({}, initialState, {
+       case LOG_IN: 
+       return Object.assign({}, initialState, {
            Profile : action.state
        })
        case LOG_OUT: return Object.assign({}, initialState, {
