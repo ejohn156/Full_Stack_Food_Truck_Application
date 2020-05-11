@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Map from '../../components/Map/Map'
 import { connect } from 'react-redux'
+import './MapPage.css'
 
 function mapStateToProps(state) {
     return ({
@@ -26,7 +27,7 @@ class MapPage extends Component {
     render() {
         return (
             <div>
-                <Map profile={this.state.profile}/>
+                <Map className="Map" profile={this.state.profile}/>
             </div>
         )
     }
