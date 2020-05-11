@@ -27,7 +27,7 @@ class MapPage extends Component {
     render() {
         return (
             <div>
-                <Map className="Map" profile={this.state.profile}/>
+                <Map profile={this.state.profile}/>
             </div>
         )
     }

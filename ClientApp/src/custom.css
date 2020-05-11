@@ -12,3 +12,16 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+html {
+  height: 100%
+}
+body {
+  height: 100%
+}
+#root, #root>div, #root>div>.container{
+  height: 100%
+}
+
+#root>div>.container>div{
+  height: 80%
+}
