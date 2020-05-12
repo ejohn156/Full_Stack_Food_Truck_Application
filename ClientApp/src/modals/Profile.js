@@ -10,8 +10,8 @@ export default class Favorites extends Component {
         }
     }
 
-    componentDidUpdate(){
-        if(this.state.profile !== this.props.profile){
+    componentDidUpdate() {
+        if (this.state.profile !== this.props.profile) {
             this.setState({
                 profile: this.props.profile
             })
@@ -26,7 +26,7 @@ export default class Favorites extends Component {
                         <h2>{this.state.formType}</h2>
                         <Button>
                             Update
-            </Button>
+                        </Button>
                     </Modal.Header>
                     <Modal.Body>
                         <h3>{this.state.profile.First_Name} {this.state.profile.Last_Name}</h3>
@@ -35,7 +35,7 @@ export default class Favorites extends Component {
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.props.toggleProfile}>
                             Close
-          </Button>
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             )
