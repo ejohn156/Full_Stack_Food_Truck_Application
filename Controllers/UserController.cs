@@ -115,8 +115,8 @@ namespace Full_Stack_Food_Truck_Application.Controllers
             {
                 var userToUpdate = _mapper.Map<User>(model);
                 userToUpdate.Id = Id;
-                _userService.Update(userToUpdate, model.Password);
-                return Ok("User has been Updated successfully");
+                var updatedUser = _userService.Update(userToUpdate, model.Password);
+                return Ok(_mapper.Map<GetUserModel>(updatedUser));
             }
             catch (AppException ex)
             { return BadRequest(new { message = ex.Message }); }

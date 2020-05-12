@@ -14,7 +14,7 @@ namespace Full_Stack_Food_Truck_Application.Services
         void Delete(string id);
         IEnumerable<User> GetAll();
         User GetById(string id);
-        void Update(User userParam, string password = null);
+        User Update(User userParam, string password = null);
     }
 
     public class UserServices : IUserServices
@@ -72,11 +72,11 @@ namespace Full_Stack_Food_Truck_Application.Services
             }
         }
 
-        public void Update(User userToUpdate, string password = null)
+        public User Update(User userToUpdate, string password = null)
         {
             try
             {
-                _userRepo.Update(userToUpdate, password);
+                return _userRepo.Update(userToUpdate, password);
             }
             catch (Exception ex)
             {

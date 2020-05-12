@@ -14,7 +14,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
         void Delete(string id);
         IEnumerable<User> GetAll();
         User GetById(string id);
-        void Update(User userParam, string password = null);
+        User Update(User userParam, string password = null);
     }
 
     public class UserRepository : IUserRepository
@@ -72,7 +72,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
             return user;
         }
 
-        public void Update(User userParam, string password = null)
+        public User Update(User userParam, string password = null)
         {
             var user = _context.Users.Find(userParam.Id);
 
@@ -107,6 +107,7 @@ namespace Full_Stack_Food_Truck_Application.Data.Repositories
 
             _context.Users.Update(user);
             _context.SaveChanges();
+            return _context.Users.Find(userParam.Id);
         }
 
         public void Delete(string id)
