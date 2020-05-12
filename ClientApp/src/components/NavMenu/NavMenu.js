@@ -52,13 +52,11 @@ class NavMenu extends Component {
         this.setState({showRegistrationForm : !this.state.showRegistrationForm})
     }
     toggleProfile(){
-      console.log("toggle profile called")
       this.setState({
           showProfile : !this.state.showProfile,
       })
   }
     toggleFavorites(){
-      console.log("toggle profile called")
         this.setState({showFavorites : !this.state.showFavorites})
     }
 

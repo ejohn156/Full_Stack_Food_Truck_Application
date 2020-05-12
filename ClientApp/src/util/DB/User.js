@@ -24,13 +24,20 @@ export default {
         return CreatedUser
     },
     updateUser: async function (userToBeUpdated, token) {
+        console.log(token)
+        console.log(userToBeUpdated)
         const ApiCall = ApiBase + `/${userToBeUpdated.Id}`
-        let updatedUser = (await axios.put(ApiCall, { userToBeUpdated }, {
-            header: {
+        await axios.put(ApiCall, {
+            First_Name: userToBeUpdated.First_Name,
+            Last_Name: userToBeUpdated.Last_Name,
+            Email: userToBeUpdated.Email,
+            Password: userToBeUpdated.Password
+        }, {
+            headers: {
                 Authorization: 'Bearer ' + token
             }
-        }))
-        return updatedUser.PromiseValue.data
+
+        })
     },
     getAllUsers: async function (token) {
         const ApiCall = ApiBase
