@@ -27,7 +27,7 @@ export default {
         console.log(token)
         console.log(userToBeUpdated)
         const ApiCall = ApiBase + `/${userToBeUpdated.Id}`
-        await axios.put(ApiCall, {
+        var updatedUser = await axios.put(ApiCall, {
             First_Name: userToBeUpdated.First_Name,
             Last_Name: userToBeUpdated.Last_Name,
             Email: userToBeUpdated.Email,
@@ -38,6 +38,7 @@ export default {
             }
 
         })
+        return updatedUser;
     },
     getAllUsers: async function (token) {
         const ApiCall = ApiBase

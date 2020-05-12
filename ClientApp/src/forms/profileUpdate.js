@@ -59,15 +59,22 @@ class ProfileUpdate extends Component {
     async submitprofileUpdate(event) {
         event.preventDefault()
         if(this.state.password.length > 0){
-        await UserDb.updateUser(
+        var updatedUser = await UserDb.updateUser(
             {Id : this.props.profile.Id,
             Email: this.state.Email,
             First_Name : this.state.firstName,
             Last_Name : this.state.lastName,
             Password : this.state.password}, this.props.profile.Token)
             
-            console.log("user updated")
-            
+            var newProfile = {Email : updatedUser.data.email,
+                Favorites: updatedUser.data.favorites,
+                Id : updatedUser.data.id,
+                First_Name: updatedUser.data.first_Name,
+                Last_Name: updatedUser.data.last_Name,
+                Token: this.props.profile.Token
+              }
+
+            await this.props.updateProfile(newProfile)
             this.props.toggleUpdateForm()
         }
         else {
