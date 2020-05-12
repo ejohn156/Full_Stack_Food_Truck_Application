@@ -4,9 +4,11 @@ import {Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import RegistrationForm from '../../modals/RegistrationForm'
-import NavigationLink from '../NavigationLink/NavigationLink'
+
 import SearchBar from '../SearchBar/SearchBar'
 import { connect } from 'react-redux'
+import Favorites from '../../modals/Favorites'
+import Profile from '../../modals/Profile'
 
 function mapStateToProps(state) {
   return ({
@@ -24,11 +26,14 @@ class NavMenu extends Component {
     this.state = {
       collapsed: true,
       showRegistrationForm: false,
+      showProfile: false,
+      showFavorites: false,
       profile: this.props.profile
     };
 
     this.closeRegistrationForm = this.closeRegistrationForm.bind(this)
-
+    this.toggleFavorites = this.toggleFavorites.bind(this)
+    this.toggleProfile = this.toggleProfile.bind(this)
   }
 
   toggleNavbar() {
@@ -46,10 +51,29 @@ class NavMenu extends Component {
     closeRegistrationForm(){
         this.setState({showRegistrationForm : !this.state.showRegistrationForm})
     }
+    toggleProfile(){
+      console.log("toggle profile called")
+      this.setState({
+          showProfile : !this.state.showProfile,
+      })
+  }
+    toggleFavorites(){
+      console.log("toggle profile called")
+        this.setState({showFavorites : !this.state.showFavorites})
+    }
+
+    Register(){
+      this.setState({
+          showRegistrationForm : !this.state.showRegistrationForm,
+      })
+  }
+
+    closeRegistrationForm(){
+        this.setState({showRegistrationForm : !this.state.showRegistrationForm})
+    }
     //temporary until store holding users info is created
     
     componentDidUpdate(){
-      console.log(this.props.profile)
       if(this.state.profile !== this.props.profile){
         this.setState({
           profile: this.props.profile
@@ -63,15 +87,14 @@ class NavMenu extends Component {
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
           <Container>
-            <NavbarBrand tag={Link} to="/">Food Truck Forum</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                   {!this.state.profile.Id ? <Button variant="info" onClick={() => this.Register()}>Register</Button>
                   : 
                   <>
-                  <NavigationLink linkName="Map"></NavigationLink>
-                  <NavigationLink linkName="Profile"></NavigationLink>
+                  <Button variant="info" onClick={() => this.toggleProfile()}>Profile</Button>
+                  <Button variant="info" onClick={() => this.toggleFavorites()}>Favorites</Button>
                   </>
                   }
               </ul>
@@ -81,6 +104,8 @@ class NavMenu extends Component {
         </Navbar>
       </header>
       <RegistrationForm show={this.state.showRegistrationForm} closeRegistrationForm={this.closeRegistrationForm} submitRegistrationForm={this.submitRegistrationForm}/>
+      <Favorites show={this.state.showFavorites} favorites={this.state.profile.Favorites} toggleFavorites={this.toggleFavorites}/>
+      <Profile show={this.state.showProfile} profile={this.state.profile} toggleProfile={this.toggleProfile}/>
       </div>
     );
   }
