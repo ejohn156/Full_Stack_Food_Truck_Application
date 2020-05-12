@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler} from 'reactstrap';
-import {Button} from 'react-bootstrap'
+import { Collapse, Container, Navbar, NavbarToggler } from 'reactstrap';
+import { Button , DropdownButton, DropdownItem} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import RegistrationForm from '../../modals/RegistrationForm'
@@ -28,9 +28,8 @@ class NavMenu extends Component {
       showRegistrationForm: false,
       showProfile: false,
       showFavorites: false,
-      profile: this.props.profile
+      profile: this.props.profile,
     };
-
     this.closeRegistrationForm = this.closeRegistrationForm.bind(this)
     this.toggleFavorites = this.toggleFavorites.bind(this)
     this.toggleProfile = this.toggleProfile.bind(this)
@@ -42,68 +41,72 @@ class NavMenu extends Component {
     });
   }
 
-  Register(){
-      this.setState({
-          showRegistrationForm : !this.state.showRegistrationForm,
-      })
+  Register() {
+    this.setState({
+      showRegistrationForm: !this.state.showRegistrationForm,
+    })
   }
 
-    closeRegistrationForm(){
-        this.setState({showRegistrationForm : !this.state.showRegistrationForm})
-    }
-    toggleProfile(){
-      this.setState({
-          showProfile : !this.state.showProfile,
-      })
+  closeRegistrationForm() {
+    this.setState({ showRegistrationForm: !this.state.showRegistrationForm })
   }
-    toggleFavorites(){
-        this.setState({showFavorites : !this.state.showFavorites})
-    }
-
-    Register(){
-      this.setState({
-          showRegistrationForm : !this.state.showRegistrationForm,
-      })
+  toggleProfile() {
+    this.setState({
+      showProfile: !this.state.showProfile,
+    })
+  }
+  toggleFavorites() {
+    this.setState({ showFavorites: !this.state.showFavorites })
   }
 
-    closeRegistrationForm(){
-        this.setState({showRegistrationForm : !this.state.showRegistrationForm})
+  Register() {
+    this.setState({
+      showRegistrationForm: !this.state.showRegistrationForm,
+    })
+  }
+
+  closeRegistrationForm() {
+    this.setState({ showRegistrationForm: !this.state.showRegistrationForm })
+  }
+  //temporary until store holding users info is created
+
+  componentDidUpdate() {
+    if (this.state.profile !== this.props.profile) {
+      this.setState({
+        profile: this.props.profile
+      })
     }
-    //temporary until store holding users info is created
-    
-    componentDidUpdate(){
-      if(this.state.profile !== this.props.profile){
-        this.setState({
-          profile: this.props.profile
-        })
-      }
-    }
+  }
 
   render() {
     return (
-        <div>
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
+      <div>
+        <header>
+          <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
+            <Container>
+              <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
+              <Collapse className="d-sm-inline-flex flex-sm-row" isOpen={!this.state.collapsed} navbar>
+                <ul className="navbar-nav flex-grow">
                   {!this.state.profile.Id ? <Button variant="info" onClick={() => this.Register()}>Register</Button>
-                  : 
-                  <>
-                  <Button variant="info" onClick={() => this.toggleProfile()}>Profile</Button>
-                  <Button variant="info" onClick={() => this.toggleFavorites()}>Favorites</Button>
-                  </>
+                    :
+                    <>
+                      <DropdownButton variant="info" id="dropdown-basic-button" title="Profile">
+                          <DropdownItem onClick={() => this.toggleProfile()}>Profile Info</DropdownItem>
+                          <DropdownItem>Change Password</DropdownItem>
+                          <DropdownItem>Delete Account</DropdownItem>
+                      </DropdownButton>
+                      <Button variant="info" onClick={() => this.toggleFavorites()}>Favorites</Button>
+                    </>
                   }
-              </ul>
-            </Collapse>
-            <SearchBar/>
-          </Container>
-        </Navbar>
-      </header>
-      <RegistrationForm show={this.state.showRegistrationForm} closeRegistrationForm={this.closeRegistrationForm} submitRegistrationForm={this.submitRegistrationForm}/>
-      <Favorites show={this.state.showFavorites} favorites={this.state.profile.Favorites} toggleFavorites={this.toggleFavorites}/>
-      <Profile show={this.state.showProfile} profile={this.state.profile} toggleProfile={this.toggleProfile}/>
+                  <SearchBar />
+                </ul>
+              </Collapse>
+            </Container>
+          </Navbar>
+        </header>
+        <RegistrationForm show={this.state.showRegistrationForm} closeRegistrationForm={this.closeRegistrationForm} submitRegistrationForm={this.submitRegistrationForm} />
+        <Favorites show={this.state.showFavorites} favorites={this.state.profile.Favorites} toggleFavorites={this.toggleFavorites} />
+        <Profile show={this.state.showProfile} profile={this.state.profile} toggleProfile={this.toggleProfile} />
       </div>
     );
   }
