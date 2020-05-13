@@ -1,6 +1,7 @@
 import './Map.css'
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl'
+import yelpApi from '../../util/API/Yelp'
 
 mapboxgl.accessToken = process.env.REACT_APP_mapboxAPIKey
 
@@ -29,6 +30,7 @@ export default class Map extends Component {
     });
   }
 
+  
   render() {
 
     return (

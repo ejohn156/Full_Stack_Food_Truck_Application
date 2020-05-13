@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, FormGroup, Button} from 'reactstrap';
 import './SearchBar.css'
 import '../NavMenu/NavMenu.css'
-
+import yelpAPI from '../../util/API/Yelp'
 
 export default class SearchBar extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ export default class SearchBar extends Component {
 
     handleSearchSubmit(event){
         event.preventDefault()
-        alert("searching: " + this.state.SearchText)
+        yelpAPI.searchTrucks(this.state.SearchText)
     }
 }
 
