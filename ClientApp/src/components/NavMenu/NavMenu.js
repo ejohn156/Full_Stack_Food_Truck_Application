@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarToggler } from 'reactstrap';
 import { Button , DropdownButton, DropdownItem} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
 import './NavMenu.css';
 import RegistrationForm from '../../modals/RegistrationForm'
-
 import SearchBar from '../SearchBar/SearchBar'
 import { connect } from 'react-redux'
 import Favorites from '../../modals/Favorites/Favorites'
@@ -12,7 +10,7 @@ import Profile from '../../modals/Profile'
 
 function mapStateToProps(state) {
   return ({
-    profile: state.Profile
+    profile: state.Profile.Profile
   })
 }
 

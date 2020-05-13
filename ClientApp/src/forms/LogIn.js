@@ -4,7 +4,7 @@ import {Input} from 'reactstrap'
 import UserDb from '../util/DB/User'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {LOG_IN} from '../Store/profile.action'
+import {LOG_IN} from '../Store/profile/profile.action'
 
 const LOGIN = (profile) => ({type: LOG_IN, state: profile})
 

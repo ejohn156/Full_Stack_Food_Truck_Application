@@ -12,15 +12,25 @@ export default class Map extends Component {
       lng: -80.843,
       lat: 35.2271,
       zoom: 13,
-      profile: this.props.profile
+      favorites: this.props.favorites,
+      trucks: this.props.trucks
     }
   }
-  async componentDidUpdate() {
-    if (this.props.profile !== this.state.profile)
-      await this.setState({
-        profile: this.props.profile
-      })
-  }
+  componentDidUpdate() {
+    
+    if (this.props.favorites !== this.state.favorites) {
+        this.setState({
+            favorites: this.props.favorites,
+        })
+        console.log(this.props.favorites)
+    }
+    else if(this.props.trucks !== this.state.trucks){
+        this.setState({
+            trucks: this.props.trucks,
+        })
+        console.log(this.props.trucks)
+    }
+}
   componentDidMount() {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -28,6 +38,8 @@ export default class Map extends Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
     });
+    console.log(this.props.profile)
+    console.log(this.props.trucks)
   }
 
   

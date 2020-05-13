@@ -4,7 +4,7 @@ import {Input, Label} from 'reactstrap'
 import UserDb from '../util/DB/User'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { UPDATE_PROFILE } from '../Store/profile.action'
+import { UPDATE_PROFILE } from '../Store/profile/profile.action'
 import User from '../util/DB/User';
 
 const updateProfile = (profile) => ({ type: UPDATE_PROFILE, state: profile })

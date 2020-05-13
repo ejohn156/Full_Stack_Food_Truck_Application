@@ -16,7 +16,7 @@ export default {
             },
             params: searchParams
         })
-        console.log(foodtrucks)
+        return foodtrucks.data.businesses
        
 }
 }

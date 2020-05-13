@@ -5,7 +5,8 @@ import './MapPage.css'
 
 function mapStateToProps(state) {
     return ({
-      profile: state.Profile
+      profile: state.Profile.Profile,
+      trucks: state.Trucks.Trucks
     })
   }
 
@@ -20,14 +21,19 @@ class MapPage extends Component {
     componentDidUpdate() {
         if (this.props.profile !== this.state.profile) {
             this.setState({
-                profile: this.props.profile
+                profile: this.props.profile,
+            })
+        }
+        else if(this.props.trucks !== this.state.trucks){
+            this.setState({
+                trucks: this.props.trucks,
             })
         }
     }
     render() {
         return (
             <div>
-                <Map profile={this.state.profile}/>
+                <Map favorites={this.state.profile.Favorites} trucks={this.state.trucks}/>
             </div>
         )
     }
